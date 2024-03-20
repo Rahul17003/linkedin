@@ -1,3 +1,4 @@
+import { Feather, FontAwesome5 } from '@expo/vector-icons';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Link, Tabs } from 'expo-router';
 import { Pressable, StyleSheet } from 'react-native';
@@ -11,15 +12,21 @@ function TabBarIcon(props: {
 
 export default function TabLayout() {
   return (
-    <Tabs
+    <Tabs 
       screenOptions={{
-        tabBarActiveTintColor: 'black',
+        tabBarActiveTintColor: '#0ea5e9',
+        tabBarInactiveTintColor: '#161616',
+        tabBarShowLabel: true,
+        tabBarStyle:{
+          borderTopWidth:0
+      }
       }}>
       <Tabs.Screen
         name="index"
         options={{
+          headerShown: false,
           title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: ({ color }) => <Feather name="home" size={24} color={color} />,
           headerRight: () => (
             <Link href="/modal" asChild>
               <Pressable>
@@ -39,8 +46,29 @@ export default function TabLayout() {
       <Tabs.Screen
         name="two"
         options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: 'My Network',
+          tabBarIcon: ({ color }) => <FontAwesome5 name="users" size={24} color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="post"
+        options={{
+          title: 'Post',
+          tabBarIcon: ({ color }) => <Feather name="plus-square" size={24} color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="notifications"
+        options={{
+          title: 'Notifications',
+          tabBarIcon: ({ color }) => <Feather name="bell" size={24} color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="jobs"
+        options={{
+          title: 'Jobs',
+          tabBarIcon: ({ color }) => <Feather name="briefcase" size={24} color={color} />,
         }}
       />
     </Tabs>
